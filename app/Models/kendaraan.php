@@ -12,9 +12,7 @@ class kendaraan extends Model
     protected $table = 'kendaraan';
 
     protected $fillable = [
-        'id_kendaraan',
-        'id_jns_kendaraan',
-        'id_pemilik',
+        'id',
         'nopol',
         'thn_kendaraan',
         'no_mesin',

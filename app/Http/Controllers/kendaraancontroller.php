@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\kendaraan;
-use App\Models\service;
 use Illuminate\Http\Request;
 
 class kendaraancontroller extends Controller
@@ -14,7 +13,7 @@ class kendaraancontroller extends Controller
     public function index()
     {
         $data = kendaraan::get();
-        return view('service.tampilService', compact('data'));
+        return view('kendaraan.tampilkendaraan', compact('data'));
     }
 
     /**
@@ -33,9 +32,6 @@ class kendaraancontroller extends Controller
     {
         //untuk menyimpan
         $data = new kendaraan();
-        $data->id_kendaraan=$request->id_kendaraan;
-        $data->id_jns_kendaraan=$request->id_jns_kendaraan;
-        $data->id_pemilik=$request->id_pemilik;
         $data->nopol=$request->nopol;
         $data->thn_kendaraan=$request->thn_kendaraan;
         $data->no_mesin=$request->no_mesin;
@@ -43,7 +39,7 @@ class kendaraancontroller extends Controller
         $data->kapasitas_mesin=$request->kapasitas_mesin;
         $data->transmisi=$request->transmisi;
         $post = $data->save();
-        return redirect('service');
+        return redirect('kendaraan');
     }
 
     /**
@@ -64,9 +60,6 @@ class kendaraancontroller extends Controller
         //
         $data = kendaraan::where('id', '=', $id);
         $data->update([
-            'id_kendaraan' => $request->id_kendaraan,
-            'id_jns_kendaraan' => $request->id_jns_kendaraan,
-            'd_pemilik' => $request->d_pemilik,
             'nopol' => $request->nopol,
             'no_mesin' => $request->no_mesin,
             'no_rangka' => $request->no_rangka,
@@ -75,7 +68,7 @@ class kendaraancontroller extends Controller
             
             
         ]);
-        return redirect('service');
+        return redirect('kendaraan');
     }
 
     /**

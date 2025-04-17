@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\detail_service;
-use App\Models\service;
 use Illuminate\Http\Request;
 
 class detailservicecontroller extends Controller
@@ -14,7 +13,7 @@ class detailservicecontroller extends Controller
     public function index()
     {
         $data = detail_service::get();
-        return view('detailservice.tampildetailService', compact('data'));
+        return view('detailservice.tampildetailservice', compact('data'));
     }
 
     /**
@@ -23,7 +22,7 @@ class detailservicecontroller extends Controller
     public function create()
     {
         //untuk menampilkan form
-        return view('detailservice.tambahdetailService');
+        return view('detailservice.tambahdetailservice');
     }
 
     /**
@@ -32,7 +31,7 @@ class detailservicecontroller extends Controller
     public function store(Request $request)
     {
         //untuk menyimpan
-        $data = new service();
+        $data = new detail_service();
         $data->sparepart = $request->sparepart;
         $data->harga = $request->harga;
         $post = $data->save();
@@ -55,7 +54,7 @@ class detailservicecontroller extends Controller
     public function update(Request $request, string $id)
     {
         //
-        $data = service::where('id', '=', $id);
+        $data = detail_service::where('id', '=', $id);
         $data->update([
             'sparepart' => $request->sparepart,
             'harga'=> $request->harga,
